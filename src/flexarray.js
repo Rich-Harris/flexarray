@@ -1,13 +1,21 @@
 var FlexArray = {
-	Float32: factory( Float32Array, 32 )
+	Int8:         factory( Int8Array ),
+	Uint8:        factory( Uint8Array ),
+	Uint8Clamped: factory( Uint8ClampedArray ),
+	Int16:        factory( Int16Array ),
+	Uint16:       factory( Uint16Array ),
+	Int32:        factory( Int32Array ),
+	Uint32:       factory( Uint32Array ),
+	Float32:      factory( Float32Array ),
+	Float64:      factory( Float64Array )
 };
 
 function factory ( TypedArray ) {
-	var FlexibleArray, type, arrayT;
+	var FlexArray, type;
 
 	type = getType( new TypedArray() );
 
-	FlexibleArray = function ( chunkLength ) {
+	FlexArray = function ( chunkLength ) {
 		this._chunkLength = chunkLength || 1024; // default to 1kb
 
 		this._pointer = 0;
@@ -16,7 +24,7 @@ function factory ( TypedArray ) {
 		];
 	};
 
-	FlexibleArray.prototype = {
+	FlexArray.prototype = {
 		write: function ( data ) {
 			var i, len, chunk;
 
@@ -81,7 +89,7 @@ function factory ( TypedArray ) {
 		}
 	};
 
-	return FlexibleArray;
+	return FlexArray;
 }
 
 function getType ( object ) {

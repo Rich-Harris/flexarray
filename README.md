@@ -13,7 +13,7 @@ This is an experiment, it may not go anywhere... just something I needed in a pr
 ```js
 flex = new FlexArray.Int8();
 
-// Write one bit of data at a time
+// Write one element at a time
 flex.write( 1 );
 flex.write( 2 );
 flex.write( 3 );
